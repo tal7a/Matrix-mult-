@@ -1,0 +1,233 @@
+#include <iostream>
+#include <string.h>
+#include<cmath>
+#include<math.h>
+#include <cstdlib>
+using namespace std;
+int r1, c1, r2, c2,i, j, k;;
+double A[10][10], B[10][10];
+void Show_A();
+void Show_B();
+void Matrix_A();
+void Matrix_B();
+void Summation();
+void Subtraction1();
+void Subtraction2();
+void Bye ();
+string button ;
+int main()
+{
+    cout << "1-Define(A) 2-Define(B)";
+    while(button!="exit") {
+        cout << "Choose Operation";
+        cin >> button;
+        if (button == "1")
+        {
+            Matrix_A();
+        }
+        else if (button == "2")
+        {
+            Matrix_B();
+        }
+        else if (button =="3")
+        {
+            Show_A();
+        }
+        else if (button =="4")
+        {
+            Show_B();
+        }
+        else if (button =="5")
+        {
+            Subtraction1();
+        }
+        else if (button == "6")
+        {
+            Subtraction2();
+        }
+
+        else if (button == "7")
+        {
+            Summation();
+        }
+}
+    
+    Bye();
+
+    
+        return 0;
+    }
+   
+        
+    
+    
+    void Matrix_A()
+    {//To store the value of matrix(A)
+        cout << "Enter the number of rows of matrix(A)=" << endl;
+        cin >> r1;
+        cout << "Enter the number of columns of matrix(A)=" << endl;
+        cin >> c1;
+
+        cout << "Enter the values of matrix (A)" << endl;
+        for (int i = 0; i < r1; i++)
+        {
+            for (int j = 0; j < c1; j++)
+            {
+                cout << "(a)" << i + 1 << j + 1 << " = ";
+                cin >> A[i][j];
+            }
+        }
+    };
+    void Matrix_B()
+    {
+        //To store the value of the matrix(B)
+        cout << "Enter the number of rows of matrix(B)=" << endl;
+        cin >> r2;
+        cout << "Enter the number of columns of matrix(B)=" << endl;
+        cin >> c2;
+        cout << "Enter the value of matrix (B)" << endl;
+
+        for (int i = 0; i < r2; i++)
+        {
+            for (int j = 0; j < c2; j++)
+            {
+                cout << "(b)" << i + 1 << j + 1 << " = ";
+                cin >> B[i][j];
+            }
+        }
+    };
+    void Show_A() {
+        //To show the matrix (A)
+        cout << "Matrix(A) =" << endl;
+        for (int i = 0; i < r1; i++)
+        {
+            for (int j = 0; j < c1; j++)
+            {
+                cout << " " << A[i][j];
+                if (j == c1 - 1)
+                    cout << endl << endl;
+            }
+        };
+    };
+
+    void Show_B() {
+        //To show the matrix (B)
+        cout << "Matrix(B) =" << endl;
+        for (int i = 0; i < r2; i++)
+        {
+            for (int j = 0; j < c2; j++)
+            {
+                cout << " " << B[i][j];
+                if (j == c2 - 1)
+                    cout << endl << endl;
+            }
+        };
+    };
+
+    void Summation() {
+        double sum[10][10];
+        if (c1 != c2 || r1 != r2)
+        {
+            cout << "Error! Please check that the 2 matrices have the same order" << endl;
+            Matrix_A();
+            Matrix_B();
+            Summation();
+        }
+        else
+        {
+
+            for (i = 0; i < r1; i++)
+            {
+                for (j = 0; j < c1; j++)
+                {
+                    sum[i][j] = A[i][j] + B[i][j];
+
+                }
+            }
+            cout << endl << "Sum of two matrix is: " << endl;
+            for (int i = 0; i < r2; i++)
+            {
+                for (int j = 0; j < c2; j++)
+                {
+                    cout << " " << sum[i][j];
+                    if (j == c2 - 1)
+                        cout << endl << endl;
+                }
+            };
+
+        };
+    }
+    void Subtraction1() {
+        double sub1[10][10];
+        if (c1 != c2 || r1 != r2)
+        {
+            cout << "Error! Please check that the 2 matrices have the same order" << endl;
+            Matrix_A();
+            Matrix_B();
+        }
+        else
+        {
+
+            for (i = 0; i < r1; i++)
+            {
+                for (j = 0; j < c1; j++)
+                {
+                    sub1[i][j] = A[i][j] - B[i][j];
+
+                }
+            }
+            cout << endl << "Subtraction of two matrix is: " << endl;
+            for (int i = 0; i < r2; i++)
+            {
+                for (int j = 0; j < c2; j++)
+                {
+                    cout << " " << sub1[i][j];
+                    if (j == c2 - 1)
+                        cout << endl << endl;
+                }
+            };
+
+        };
+    }
+    void Subtraction2() {
+        double sub2[10][10];
+        if (c1 != c2 || r1 != r2)
+        {
+            cout << "Error! Please check that the 2 matrices have the same order" << endl;
+            Matrix_A();
+            Matrix_B();
+        }
+        else
+        {
+
+            for (i = 0; i < r1; i++)
+            {
+                for (j = 0; j < c1; j++)
+                {
+                    sub2[i][j] = B[i][j] - A[i][j];
+
+                }
+            }
+            cout << endl << "Subtraction of two matrix is: " << endl;
+            for (int i = 0; i < r2; i++)
+            {
+                for (int j = 0; j < c2; j++)
+                {
+                    cout << " " << sub2[i][j];
+                    if (j == c2 - 1)
+                        cout << endl << endl;
+                }
+            }
+
+        };
+    }
+    void Bye(){
+        exit;
+    }
+
+    
+
+
+    
+
+
