@@ -6,6 +6,7 @@
 using namespace std;
 int r1, c1, r2, c2,i, j, k;;
 double A[10][10], B[10][10];
+double c[10][10]= { 0 };
 void Show_A();
 void Show_B();
 void Matrix_A();
@@ -13,17 +14,20 @@ void Matrix_B();
 void Summation();
 void Subtraction1();
 void Subtraction2();
+void Multiplication(double D [10][10]);
+void Division();
 void Bye ();
 string button ;
 int main()
 {
-    cout << "1-Define(A) 2-Define(B)";
+    cout << "1-Define(A) 2-Define(B) 3-Show A 4-Show B 5-A-B 6-B-A 7-B+A 8-A*b 9-A/B"<<endl;
     while(button!="exit") {
-        cout << "Choose Operation";
+        cout << "\nChoose Operation";
         cin >> button;
         if (button == "1")
         {
             Matrix_A();
+            
         }
         else if (button == "2")
         {
@@ -32,10 +36,14 @@ int main()
         else if (button =="3")
         {
             Show_A();
+           
+            
         }
         else if (button =="4")
         {
             Show_B();
+            
+
         }
         else if (button =="5")
         {
@@ -50,6 +58,15 @@ int main()
         {
             Summation();
         }
+        else if (button == "8")
+        {
+            Multiplication(B);
+        }
+        else if (button=="9")
+        {
+            Division();
+        }
+
 }
     
     Bye();
@@ -224,10 +241,56 @@ int main()
     void Bye(){
         exit;
     }
+    void Multiplication(double D[10][10]) {
+        //To multiply two matrix
+    //To initialize an array
+         double mult[10][10] = { 0 };
+        if (c1 != r2) {
+            cout << "Error! c1 is not equal r2" << endl;
+            Matrix_A();
+            Matrix_B();
+            Multiplication(D);
+            exit(0);
+        }
+        else {
+            cout << "The Result =" << endl;
+            for (int i = 0; i < r1; i++)
+            {
+                for (int j = 0; j < c2; j++)
+                    for (int k = 0; k < c1; k++)
+                    {
+                        mult[i][j] += A[i][k] * D[k][j];
+                    }
+            }
+        };
+        for (int i = 0; i < r1; i++)
+        {
+            for (int j = 0; j < c2; j++)
+                cout << " " << mult[i][j];
+            if (j = c2 - 1)
+                cout << endl << endl;
+        }
 
+    }
+    void Division() {
+        double determinant = 0;
+        for (i = 0; i < 3; i++) {
+            determinant = determinant + (B[0][i] * (B[1][(i + 1) % 3] * B[2][(i + 2) % 3] - B[1][(i + 2) % 3] * B[2][(i + 1) % 3]));
+
+        }
+        if (determinant == 0)
+        {
+            cout << "Error! B is noninvertable ";
+        }
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                c[i][j] = ((B[(j + 1) % 3][(i + 1) % 3] * B[(j + 2) % 3][(i + 2) % 3]) - (B[(j + 1) % 3][(i + 2) % 3] * B[(j + 2) % 3][(i + 1) % 3])) / determinant;
+
+            }
+        }
+        Multiplication(c);
+    }
+        
     
 
-
     
-
-
